@@ -1,5 +1,7 @@
 # ASCII Art GIF Converter
 
+[![Try it out](https://img.shields.io/badge/Try%20it-Online-4299e1?style=for-the-badge&logo=github)](https://jayrichh.github.io/ascii/)
+
 ![ASCII Art GIF Converter Preview](preview.png)
 
 A real-time GIF to ASCII art converter with interactive zoom controls and multiple export formats.
