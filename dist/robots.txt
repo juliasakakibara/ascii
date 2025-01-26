@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://asciigif.com/sitemap.xml

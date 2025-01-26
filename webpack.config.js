@@ -45,7 +45,9 @@ module.exports = {
       patterns: [
         { from: 'favicon.svg' },
         { from: 'gif.worker.js' },
-        { from: 'preview.png' }
+        { from: 'preview.png' },
+        { from: 'sitemap.xml' },
+        { from: 'robots.txt' }
       ]
     })
   ],
