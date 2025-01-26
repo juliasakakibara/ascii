@@ -2,7 +2,7 @@
 
 Convert GIFs to ASCII art with interactive zoom and export options.
 
-[![Try it out](https://img.shields.io/badge/Try%20it-Online-4299e1?style=for-the-badge&logo=github)](https://jayrichh.github.io/ascii/)
+[![Try it out](https://img.shields.io/badge/Try%20it-Online-4299e1?style=for-the-badge&logo=github)](https://asciigif.com/)
 
 ![ASCII Art GIF Converter Preview](preview.png)
 
