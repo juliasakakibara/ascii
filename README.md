@@ -1,38 +1,20 @@
 # ASCII Art GIF Converter
 
+Convert GIFs to ASCII art with interactive zoom and export options.
 [![Try it out](https://img.shields.io/badge/Try%20it-Online-4299e1?style=for-the-badge&logo=github)](https://jayrichh.github.io/ascii/)
 
 ![ASCII Art GIF Converter Preview](preview.png)
+![image](https://github.com/user-attachments/assets/1ea1dceb-7057-45a9-872e-6d290fcd8d87)
 
-A real-time GIF to ASCII art converter with interactive zoom controls and multiple export formats.
 
-## Features
+## What It Does
+- Transform animated GIFs into text-based art. Zoom, pan, and export in multiple formats including GIF, ASCII, JSON, and CSV.
 
-- Real-time GIF to ASCII conversion
-- Interactive zoom and pan controls
-- Multiple export formats (GIF, ASCII, JSON, CSV)
-- Color mode support
-- Responsive design
-
-## Usage
-
-1. Enter a GIF URL or use the default example
-2. Click on the animation to activate zoom controls
-3. Use mouse wheel or slider to zoom
-4. Click and drag to pan around
-5. Export in your preferred format
-
-## Export Options
-
-- GIF: Animated ASCII art
-- ASCII Text: Raw ASCII frames
-- JSON: Frame data in JSON format
-- CSV: Frame data in CSV format
-- Canvas: Current frame as image
+## How to Use
+Enter a GIF URL, click to zoom, scroll to adjust, drag to pan. Export the result in your preferred format.
 
 ## Tech
-
-- Vanilla JavaScript
-- p5.js for rendering
-- GSAP for animations
-- gif.js for GIF handling
+Vanilla JavaScript
+p5.js
+GSAP
+gif.js
