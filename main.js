@@ -667,6 +667,7 @@ class AsciiGifConverter {
   }
 }
 
+import './src/styles/main.css';
 import { GifBrowser } from './src/js/gifBrowser.js';
 
 let gifConverter;
