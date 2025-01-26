@@ -24,3 +24,6 @@ gif.js
   <img src="https://github.com/user-attachments/assets/b55e967f-88ce-4837-80bf-02a48471cacb" width="800" alt="Detailed Analytics">
   <img src="https://github.com/user-attachments/assets/05c078a5-366b-45e7-aa04-2c3392150045" width="800" alt="Data Exploration Interface">
 </div>
+
+Goat count:
+[https://ascii.goatcounter.com/](https://ascii.goatcounter.com/)
