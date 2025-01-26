@@ -89,7 +89,10 @@ export class GifBrowser {
   }
 
   buildEndpoint(offset) {
-    const GIPHY_API_KEY = atob("anVBZ0RSNXhpZGU1SHR4eXRQZzRjS1hNZWhIZ2JGTGc=")
+    const GIPHY_API_KEY = process.env.GIPHY_API_KEY || ''
+    if (!GIPHY_API_KEY) {
+      throw new Error('GIPHY_API_KEY environment variable is not set')
+    }
     const baseUrl = "https://api.giphy.com/v1/gifs"
     const params = new URLSearchParams({
       api_key: GIPHY_API_KEY,
