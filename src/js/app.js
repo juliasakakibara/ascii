@@ -667,21 +667,16 @@ class AsciiGifConverter {
   }
 }
 
-import { GifBrowser } from './src/js/gifBrowser.js';
-
 let gifConverter;
-let gifBrowser;
 
-// Make p5.js functions global
-window.preload = function() {
-  gifBrowser = new GifBrowser();
+function preload() {
   gifConverter = new AsciiGifConverter(
     "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif"
   );
   gifConverter.preload();
-};
+}
 
-window.setup = function() {
+function setup() {
   createCanvas(windowWidth, windowHeight);
   frameRate(30);
   const colorToggle = document.getElementById("color-toggle");
@@ -713,14 +708,14 @@ window.setup = function() {
   });
 }
 
-window.draw = function() {
+function draw() {
   if (gifConverter) {
     gifConverter.update();
     gifConverter.draw();
   }
 }
 
-window.windowResized = function() {
+function windowResized() {
   if (gifConverter) {
     gifConverter.windowResized();
   }
