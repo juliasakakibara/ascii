@@ -31,9 +31,6 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new webpack.DefinePlugin({
-      'process.env.GIPHY_API_KEY': JSON.stringify(process.env.GIPHY_API_KEY)
-    }),
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: 'index.html'

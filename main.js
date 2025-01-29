@@ -647,6 +647,11 @@ class AsciiGifConverter {
   }
 
   cleanup() {
+    // Clear any pending timeouts
+    if (this.loadTimeout) {
+      clearTimeout(this.loadTimeout);
+    }
+    
     // Remove event listeners
     document.removeEventListener('mousedown', this.handleMouseDown);
     document.removeEventListener('mousemove', this.handleMouseMove);
@@ -664,6 +669,20 @@ class AsciiGifConverter {
       this.isZoomActive = false;
       this.updateZoomUI();
     }
+    
+    // Clear any existing error states
+    document.getElementById('loading-overlay').classList.add('hidden');
+    
+    // Reset all instance properties
+    this.gif = null;
+    this.asciiFrames = [];
+    this.currentFrame = 0;
+    this.isProcessing = false;
+    this.scale = 1;
+    this.targetScale = 1;
+    this.isGrabbed = false;
+    this.zoomOriginX = 0;
+    this.zoomOriginY = 0;
   }
 }
 
@@ -699,11 +718,24 @@ window.setup = function() {
       alert('Please enter a GIF URL');
       return;
     }
+    
+    // Ensure proper cleanup of existing instance
     if (gifConverter) {
       gifConverter.cleanup();
+      // Clear any existing error states
+      document.getElementById('loading-overlay').classList.add('hidden');
     }
-    gifConverter = new AsciiGifConverter(newUrl);
-    gifConverter.preload();
+    
+    try {
+      // Basic URL validation
+      new URL(newUrl);
+      // Create new instance and preload
+      gifConverter = new AsciiGifConverter(newUrl);
+      gifConverter.preload();
+    } catch (error) {
+      alert('Please enter a valid URL');
+      return;
+    }
   });
 
   resetButton.addEventListener("click", () => {

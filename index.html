@@ -6,10 +6,13 @@
     <title>ASCII Art Generator - Convert GIFs to ASCII Animation | Free Online Tool</title>
     
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     
     <meta name="title" content="ASCII Art Generator - Convert GIFs to ASCII Animation | Free Online Tool">
-    <meta name="description" content="Transform your GIFs into stunning ASCII art animations with our free online converter. Features real-time preview, zoom controls, and multiple export formats. Try it now!">
+    <meta name="description" content="Free ASCII art generator - No sign up required! Convert GIFs to ASCII animations instantly. Features real-time preview, zoom controls, and multiple export formats. Create, customize, and download your ASCII art now.">
     <meta name="keywords" content="ASCII art generator, GIF to ASCII converter, ASCII animation maker, text art creator, ASCII art online, animated ASCII, GIF converter, text animation">
     <meta name="author" content="jayrich.dev">
     <meta name="robots" content="index, follow">
@@ -88,11 +91,13 @@
         <h1>ASCII Art Generator</h1>
         <div id="controls">
             <input id="gif-url" type="text" placeholder="Enter GIF URL" aria-label="Enter GIF URL"/>
-            <button id="go-button" aria-label="Convert GIF">GO</button>
-            <button id="reset-button" aria-label="Reset">Reset</button>
+            <div class="button-group">
+                <button id="go-button" aria-label="Convert GIF">GO</button>
+                <button id="reset-button" aria-label="Reset">Reset</button>
+            </div>
             <label id="toggle-label">
-              <input type="checkbox" id="color-toggle" aria-label="Toggle color mode"/>
-              Color Mode
+                <input type="checkbox" id="color-toggle" aria-label="Toggle color mode"/>
+                Color Mode
             </label>
         </div>
     </header>

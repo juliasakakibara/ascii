@@ -9,6 +9,7 @@
     "dev": "webpack serve --mode development --open"
   },
   "dependencies": {
+    "canvas": "^3.1.0",
     "dotenv": "^16.0.3"
   },
   "devDependencies": {
