@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASCII Art Generator - Convert GIFs to ASCII Animation | Free Online Tool</title>
+    <title>Hero ASCII GIF</title>
     
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -39,7 +39,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="src/styles/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
     <script>
@@ -87,90 +87,6 @@
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-    <header id="app-header">
-        <h1>ASCII Art Generator</h1>
-        <div id="controls">
-            <input id="gif-url" type="text" placeholder="Enter GIF URL" aria-label="Enter GIF URL"/>
-            <div class="button-group">
-                <button id="go-button" aria-label="Convert GIF">GO</button>
-                <button id="reset-button" aria-label="Reset">Reset</button>
-            </div>
-            <label id="toggle-label">
-                <input type="checkbox" id="color-toggle" aria-label="Toggle color mode"/>
-                Color Mode
-            </label>
-        </div>
-    </header>
-    
-    <div id="stats-window" role="complementary" aria-label="Conversion Statistics">
-        <h3>Statistics</h3>
-        <p><strong>Current Frame:</strong> <span id="current-frame">0</span></p>
-        <p><strong>Total Frames:</strong> <span id="total-frames">0</span></p>
-        <p><strong>Frame Time (ms):</strong> <span id="frame-time">0</span></p>
-        <p><strong>Elapsed Time (s):</strong> <span id="elapsed-time">0</span></p>
-        <p><strong>Resolution:</strong> <span id="resolution">0x0</span></p>
-    </div>
-    
-    <div id="zoom-controls" class="inactive">
-        <div class="zoom-info">
-            <span class="zoom-status">Click to activate controls</span>
-            <div class="zoom-slider-container">
-                <div class="zoom-range">
-                    <span class="min-zoom">0.5x</span>
-                    <div class="zoom-track">
-                        <div class="zoom-fill"></div>
-                        <div class="zoom-handle" role="slider" tabindex="0" aria-label="Zoom level" aria-valuemin="0.5" aria-valuemax="5.0" aria-valuenow="1.0"></div>
-                    </div>
-                    <span class="max-zoom">5.0x</span>
-                </div>
-                <span class="zoom-value">1.0x</span>
-            </div>
-        </div>
-        <button class="reset-zoom" aria-label="Reset zoom">
-            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
-                <path d="M3 3v5h5"></path>
-            </svg>
-        </button>
-    </div>
-
-    <div id="download-controls">
-        <button id="download-button" aria-haspopup="true" aria-expanded="false">Download As...</button>
-        <div id="download-dropdown" class="hidden" role="menu">
-            <button class="download-option" data-type="gif" role="menuitem">GIF</button>
-            <button class="download-option" data-type="ascii" role="menuitem">ASCII Text</button>
-            <button class="download-option" data-type="json" role="menuitem">JSON</button>
-            <button class="download-option" data-type="csv" role="menuitem">CSV</button>
-            <button class="download-option" data-type="canvas" role="menuitem">Canvas Image</button>
-        </div>
-    </div>
-
-    <div id="loading-overlay" class="hidden">
-        <div class="spinner"></div>
-        <p>Processing...</p>
-    </div>
-
-    <div id="gif-browser" class="hidden">
-        <div class="browser-overlay"></div>
-        <div class="browser-content">
-            <div class="browser-header">
-                <select id="category-select">
-                    <option value="trending">Trending</option>
-                    <option value="reactions">Reactions</option>
-                    <option value="memes">Memes</option>
-                    <option value="anime">Anime</option>
-                </select>
-                <button id="close-browser" aria-label="Close browser">×</button>
-            </div>
-            <div id="gif-grid"></div>
-            <div class="browser-footer">
-                <button id="prev-page" disabled>Previous</button>
-                <span id="page-info">Page 1</span>
-                <button id="next-page">Next</button>
-            </div>
-        </div>
-    </div>
-    <button id="browse-toggle" aria-label="Browse GIFs" aria-pressed="false">Browse GIFs</button>
-    <a href="https://jayrich.dev" target="_blank" rel="noopener" id="credits">jayrich.dev</a>
+    <script src="main.js"></script>
 </body>
 </html>

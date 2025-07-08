@@ -79,41 +79,6 @@
   margin: 0;
 }
 
-#stats-window {
-  position: fixed;
-  top: 90px;
-  right: 20px;
-  background: rgba(26, 32, 44, 0.95);
-  color: #f7fafc;
-  padding: 15px 25px;
-  border-radius: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 14px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 80;
-  backdrop-filter: blur(5px);
-  min-width: 200px;
-}
-
-#stats-window h3 {
-  margin: 0 0 12px 0;
-  font-size: 18px;
-  color: #4299e1;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-#stats-window p {
-  margin: 8px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#stats-window strong {
-  color: #a0aec0;
-}
-
 html,
 body {
   margin: 0;
