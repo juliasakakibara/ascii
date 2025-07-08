@@ -4,12 +4,12 @@ class AsciiGifConverter {
     this.gif = null;
     this.asciiFrames = [];
     this.currentFrame = 0;
-    this.chars = "@%#*+=-:.  ";
+    this.chars = " @*:.   ";
     this.frameDelay = 100;
     this.lastFrameTime = 0;
     this.renderWidth = 0;
     this.renderHeight = 0;
-    this.scaleFactor = 0.15;
+    this.scaleFactor = 0.2;
     this.isProcessing = false;
     // Para armazenar deslocamentos animados dos caracteres
     this.charOffsets = [];
