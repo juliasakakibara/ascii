@@ -4,12 +4,12 @@ class AsciiGifConverter {
     this.gif = null;
     this.asciiFrames = [];
     this.currentFrame = 0;
-    this.chars = " @*:.   ";
-    this.frameDelay = 100;
+    this.chars = " o,.* ";
+    this.frameDelay = 10;
     this.lastFrameTime = 0;
     this.renderWidth = 0;
     this.renderHeight = 0;
-    this.scaleFactor = 0.2;
+    this.scaleFactor = 0.3;
     this.isProcessing = false;
     // Para armazenar deslocamentos animados dos caracteres
     this.charOffsets = [];
@@ -32,7 +32,8 @@ class AsciiGifConverter {
     const scale = this.scaleFactor;
     const w = Math.floor(this.gif.width * scale);
     const h = Math.floor(this.gif.height * scale);
-    for (let i = 0; i < this.gif.numFrames(); i++) {
+    const frameStep = 3; // ou 3, para pular mais frames
+    for (let i = 0; i < this.gif.numFrames(); i += frameStep) {
       this.gif.setFrame(i);
       let frame = this.gif.get();
       frame.resize(w, h);
@@ -64,7 +65,7 @@ class AsciiGifConverter {
   draw() {
     if (this.isProcessing) return;
     if (this.asciiFrames.length > 0) {
-      background(24);
+      clear();
       const currentAsciiFrame = this.asciiFrames[this.currentFrame];
       const currentOffsets = this.charOffsets[this.currentFrame];
       if (currentAsciiFrame) {
@@ -87,14 +88,14 @@ class AsciiGifConverter {
             // Repel effect
             const charX = startX + col * textSizeValue;
             const charY = startY + row * textSizeValue;
-            const dx = mouseX - charX;
-            const dy = mouseY - charY;
+            const dx = pointerX - charX;
+            const dy = pointerY - charY;
             const dist = Math.sqrt(dx * dx + dy * dy);
             let targetOffsetX = 0, targetOffsetY = 0;
             const repelRadius = 100;
-            if (dist < repelRadius) {
+            if (pointerActive && dist < repelRadius) {
               const angle = Math.atan2(dy, dx);
-              const repelDist = (repelRadius - dist) * 0.4;
+              const repelDist = (repelRadius - dist) * 0.5;
               targetOffsetX = -Math.cos(angle) * repelDist;
               targetOffsetY = -Math.sin(angle) * repelDist;
             }
@@ -103,7 +104,7 @@ class AsciiGifConverter {
             prevOffset.x = lerp(prevOffset.x, targetOffsetX, 0.15);
             prevOffset.y = lerp(prevOffset.y, targetOffsetY, 0.15);
             currentOffsets[row][col] = prevOffset;
-            fill(255);
+            fill('#3D3D3D');
             text(
               char,
               charX + prevOffset.x,
@@ -111,6 +112,12 @@ class AsciiGifConverter {
             );
           }
         }
+      }
+      // Adiciona o círculo de feedback do toque/mouse
+      if (pointerActive) {
+        fill('#1EFF1B');
+        noStroke();
+        ellipse(pointerX, pointerY, 30, 30);
       }
     }
   }
@@ -139,14 +146,48 @@ class AsciiGifConverter {
 
 let gifConverter;
 
+// Variáveis para interação touch/mouse
+let pointerX = 0;
+let pointerY = 0;
+let pointerActive = false;
+
+// Mouse events (desktop)
+window.addEventListener('mousemove', (e) => {
+  pointerX = e.clientX;
+  pointerY = e.clientY;
+  pointerActive = true;
+});
+window.addEventListener('mouseleave', () => {
+  pointerActive = false;
+});
+
+// Touch events (mobile)
+window.addEventListener('touchmove', (e) => {
+  if (e.touches.length > 0) {
+    pointerX = e.touches[0].clientX;
+    pointerY = e.touches[0].clientY;
+    pointerActive = true;
+  }
+}, {passive: false});
+window.addEventListener('touchstart', (e) => {
+  if (e.touches.length > 0) {
+    pointerX = e.touches[0].clientX;
+    pointerY = e.touches[0].clientY;
+    pointerActive = true;
+  }
+}, {passive: false});
+window.addEventListener('touchend', () => {
+  pointerActive = false;
+});
+
 window.preload = function() {
-  gifConverter = new AsciiGifConverter("fire.gif");
+  gifConverter = new AsciiGifConverter("flames.gif");
   gifConverter.preload();
 };
 
 window.setup = function() {
   createCanvas(windowWidth, windowHeight);
-  frameRate(30);
+  frameRate(24);
 };
 
 window.draw = function() {
@@ -159,3 +200,22 @@ window.draw = function() {
 window.windowResized = function() {
   resizeCanvas(windowWidth, windowHeight);
 };
+
+function startRandomGlitch() {
+  const glitch = document.querySelector('.glitch');
+  function triggerGlitch() {
+    // Aplica o glitch
+    glitch.classList.add('glitch-active');
+    // Remove após 250ms (duração da animação)
+    setTimeout(() => {
+      glitch.classList.remove('glitch-active');
+      // Próximo glitch em intervalo aleatório entre 0 e 4 segundos
+      const next = Math.random() * 4000;
+      setTimeout(triggerGlitch, next);
+    }, 250);
+  }
+  // Inicia o ciclo
+  triggerGlitch();
+}
+
+document.addEventListener('DOMContentLoaded', startRandomGlitch);
