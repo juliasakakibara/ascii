@@ -51,7 +51,7 @@ class AsciiGifConverter {
           let bright = (r + g + b) / 3;
           const charIdx = Math.floor(map(bright, 0, 255, this.chars.length - 1, 0));
           row += this.chars[charIdx];
-          rowOffsets.push({x: 0, y: 0}); // Inicializa deslocamento
+          rowOffsets.push({x: 0, y: 0});
         }
         ascii.push(row);
         offsets.push(rowOffsets);
@@ -59,7 +59,7 @@ class AsciiGifConverter {
       this.asciiFrames.push(ascii);
       this.charOffsets.push(offsets);
     }
-    this.frameDelay = this.gif.frameDelay || 100;
+    this.frameDelay = this.gif.frameDelay || 50;
   }
 
   draw() {
@@ -94,15 +94,17 @@ class AsciiGifConverter {
             let targetOffsetX = 0, targetOffsetY = 0;
             const repelRadius = 100;
             if (pointerActive && dist < repelRadius) {
+              // Gradiente suave (falloff quadrático)
+              const falloff = Math.pow(1 - (dist / repelRadius), 2);
               const angle = Math.atan2(dy, dx);
-              const repelDist = (repelRadius - dist) * 0.5;
+              const repelDist = (repelRadius - dist) * 0.9 * falloff; // multiplica pelo falloff
               targetOffsetX = -Math.cos(angle) * repelDist;
               targetOffsetY = -Math.sin(angle) * repelDist;
             }
             // Interpolação suave (lerp)
             let prevOffset = currentOffsets[row][col];
-            prevOffset.x = lerp(prevOffset.x, targetOffsetX, 0.15);
-            prevOffset.y = lerp(prevOffset.y, targetOffsetY, 0.15);
+            prevOffset.x = lerp(prevOffset.x, targetOffsetX, 0.3); // 0.08 é bem suave
+            prevOffset.y = lerp(prevOffset.y, targetOffsetY, 0.3); // 0.08 é bem suave
             currentOffsets[row][col] = prevOffset;
             fill('#3D3D3D');
             text(
